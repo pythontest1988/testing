@@ -5,7 +5,7 @@ import logging
 import subprocess
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
-#from datetime import datetime
+from datetime import datetime
 
 repo_path = r"D:\automation project"
 
@@ -26,7 +26,7 @@ class Githandler(FileSystemEventHandler):
                 check=True
             )
 
-            #logging.INFO(f"git status added sucessfully")
+            logging.info(f"git status added sucessfully")
 
             subprocess.run(
                 ["git", "commit", "-m", "Auto backup"],
