@@ -8,6 +8,13 @@ from watchdog.events import FileSystemEventHandler
 
 repo_path = r"D:\automation project"
 
+logging.basicConfig(
+    filename="logs/git_backup.log",
+    level=logging.INFO,
+    force="%(asctime)s -%(message)s"
+
+)
+
 class Githandler(FileSystemEventHandler):
 
     def push_to_github(self):
@@ -18,17 +25,23 @@ class Githandler(FileSystemEventHandler):
                 check=True
             )
 
+            #logging.INFO(f"git status added sucessfully")
+
             subprocess.run(
                 ["git", "commit", "-m", "Auto backup"],
                 cwd=repo_path,
                 check=True
             )
 
+            #logging.INFO(f"git commited successfully")
+
             subprocess.run(
                 ["git", "push"],
                 cwd=repo_path,
                 check=True
             )
+
+            #logging.INFO(f"changes pushed successfully")
 
             print("Changes pushed to git repo")
 
