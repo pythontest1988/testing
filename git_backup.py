@@ -5,13 +5,14 @@ import logging
 import subprocess
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
+#from datetime import datetime
 
 repo_path = r"D:\automation project"
 
 logging.basicConfig(
     filename="logs/git_backup.log",
     level=logging.INFO,
-    force="%(asctime)s -%(message)s"
+    format="%(asctime)s -%(message)s"
 
 )
 
